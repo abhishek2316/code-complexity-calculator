@@ -1,0 +1,27 @@
+{
+  "analysis": {
+    "maxComplexity": 10,
+    "includeBigO": true,
+    "includeCyclomatic": true,
+    "includeCognitive": true,
+    "threshold": {
+      "low": 5,
+      "medium": 10,
+      "high": 20
+    }
+  },
+  "output": {
+    "format": "table",
+    "verbose": false,
+    "includeFiles": true,
+    "sortBy": "complexity"
+  },
+  "ignore": [
+    "node_modules",
+    ".git",
+    "dist",
+    "build",
+    "coverage",
+    "*.min.js"
+  ]
+}

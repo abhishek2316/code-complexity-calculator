@@ -1,0 +1,62 @@
+{
+  "languages": {
+    "javascript": {
+      "extensions": [".js", ".jsx", ".mjs", ".cjs"],
+      "parser": "jsParser",
+      "mime": ["application/javascript", "text/javascript"],
+      "patterns": {
+        "shebang": "^#!.*node",
+        "keywords": ["function", "const", "let", "var", "class"]
+      }
+    },
+    "java": {
+      "extensions": [".java"],
+      "parser": "javaParser",
+      "mime": ["text/x-java-source"],
+      "patterns": {
+        "keywords": ["public class", "private", "protected", "import java"]
+      }
+    },
+    "cpp": {
+      "extensions": [".cpp", ".cc", ".cxx", ".c++", ".c", ".h", ".hpp"],
+      "parser": "cppParser",
+      "mime": ["text/x-c", "text/x-c++"],
+      "patterns": {
+        "keywords": ["#include", "namespace", "class", "struct", "int main"]
+      }
+    },
+    "python": {
+      "extensions": [".py", ".pyx", ".pyw"],
+      "parser": "pythonParser",
+      "mime": ["text/x-python"],
+      "patterns": {
+        "shebang": "^#!.*python",
+        "keywords": ["def ", "class ", "import ", "from ", "__init__"]
+      }
+    },
+    "typescript": {
+      "extensions": [".ts", ".tsx"],
+      "parser": "jsParser",
+      "mime": ["application/typescript"],
+      "patterns": {
+        "keywords": ["interface", "type", "enum", "namespace"]
+      }
+    },
+    "go": {
+      "extensions": [".go"],
+      "parser": "goParser",
+      "mime": ["text/x-go"],
+      "patterns": {
+        "keywords": ["package main", "func ", "import", "var ", "type "]
+      }
+    },
+    "rust": {
+      "extensions": [".rs"],
+      "parser": "rustParser",
+      "mime": ["text/x-rust"],
+      "patterns": {
+        "keywords": ["fn ", "struct", "impl", "use ", "mod "]
+      }
+    }
+  }
+}
