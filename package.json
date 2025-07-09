@@ -38,8 +38,8 @@
   "dependencies": {
     "commander": "^11.1.0",
     "chalk": "^4.1.2",
-    "glob": "^10.3.10",
-    "fs-extra": "^11.2.0",
+    "glob": "^8.0.3",
+    "fs-extra": "^11.1.0",
     "mime-types": "^2.1.35",
     "cli-progress": "^3.12.0",
     "cli-table3": "^0.6.3",
