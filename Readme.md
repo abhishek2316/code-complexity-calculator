@@ -48,3 +48,19 @@ code-complexity-analyzer/
 │       └── java/
 └── examples/
     └── single-file-analysis.ts
+
+
+# To Build 
+npm run build
+
+or 
+
+npx tsc
+
+# To run
+
+npm start 
+
+or 
+
+node dist/bin/complexity-analyzer.js
