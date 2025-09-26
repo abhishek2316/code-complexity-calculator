@@ -1,0 +1,15 @@
+{
+  "compilerOptions": {
+    "target": "ES2022",         // upgrade target
+    "module": "NodeNext",
+    "moduleResolution": "NodeNext",
+    "lib": ["ES2022"],          // upgrade lib
+    "strict": true,
+    "esModuleInterop": false,
+    "allowSyntheticDefaultImports": true,
+    "outDir": "./dist",
+    "rootDir": "./src",
+    "declaration": true,
+    "sourceMap": true
+  }
+}
