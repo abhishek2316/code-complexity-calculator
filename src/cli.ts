@@ -83,11 +83,11 @@ export class InteractiveCLI {
             value: 'file',
             short: 'File'
           },
-          {
-            name: '⚙️  Configuration',
-            value: 'config',
-            short: 'Config'
-          },
+          // {
+          //   name: '⚙️  Configuration',
+          //   value: 'config',
+          //   short: 'Config'
+          // },
           {
             name: '❓ Help',
             value: 'help',
