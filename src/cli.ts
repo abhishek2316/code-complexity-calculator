@@ -189,64 +189,70 @@ export class InteractiveCLI {
     };
   }
 
-  private async getOutputConfig(): Promise<OutputConfig> {
-    const inquirer = await this.loadInquirer();
-    const questions = [
-      {
-        type: 'list',
-        name: 'format',
-        message: 'Output format:',
-        choices: [
-          {
-            name: '🖥️  Console only',
-            value: 'console',
-            short: 'Console'
-          },
-          {
-            name: '📄 Save to file',
-            value: 'file',
-            short: 'File'
-          },
-          {
-            name: '🔄 Both console and file',
-            value: 'both',
-            short: 'Both'
-          }
-        ]
-      },
-      {
-        type: 'input',
-        name: 'filename',
-        message: 'Enter output filename (or press Enter for auto-generated):',
-        when: (answers: any) => answers.format === 'file' || answers.format === 'both',
-        default: ''
-      },
-      {
-        type: 'list',
-        name: 'fileFormat',
-        message: 'File format:',
-        when: (answers: any) => answers.format === 'file' || answers.format === 'both',
-        choices: [
-          {
-            name: '📝 Text (.txt)',
-            value: 'txt',
-            short: 'TXT'
-          },
-          {
-            name: '📊 JSON (.json)',
-            value: 'json',
-            short: 'JSON'
-          },
-          {
-            name: '📈 CSV (.csv)',
-            value: 'csv',
-            short: 'CSV'
-          }
-        ]
-      }
-    ];
+  // private async getOutputConfig(): Promise<OutputConfig> {
+  //   const inquirer = await this.loadInquirer();
+  //   const questions = [
+  //     {
+  //       type: 'list',
+  //       name: 'format',
+  //       message: 'Output format:',
+  //       choices: [
+  //         {
+  //           name: '🖥️  Console only',
+  //           value: 'console',
+  //           short: 'Console'
+  //         },
+  //         {
+  //           name: '📄 Save to file',
+  //           value: 'file',
+  //           short: 'File'
+  //         },
+  //         {
+  //           name: '🔄 Both console and file',
+  //           value: 'both',
+  //           short: 'Both'
+  //         }
+  //       ]
+  //     },
+  //     {
+  //       type: 'input',
+  //       name: 'filename',
+  //       message: 'Enter output filename (or press Enter for auto-generated):',
+  //       when: (answers: any) => answers.format === 'file' || answers.format === 'both',
+  //       default: ''
+  //     },
+  //     {
+  //       type: 'list',
+  //       name: 'fileFormat',
+  //       message: 'File format:',
+  //       when: (answers: any) => answers.format === 'file' || answers.format === 'both',
+  //       choices: [
+  //         {
+  //           name: '📝 Text (.txt)',
+  //           value: 'txt',
+  //           short: 'TXT'
+  //         },
+  //         {
+  //           name: '📊 JSON (.json)',
+  //           value: 'json',
+  //           short: 'JSON'
+  //         },
+  //         {
+  //           name: '📈 CSV (.csv)',
+  //           value: 'csv',
+  //           short: 'CSV'
+  //         }
+  //       ]
+  //     }
+  //   ];
 
-    return await inquirer.prompt(questions) as OutputConfig;
+  //   return await inquirer.prompt(questions) as OutputConfig;
+  // }
+
+  private async getOutputConfig(): Promise<OutputConfig> {
+    return {
+      format: 'console'
+    };
   }
 
   private async outputResults(results: any, outputConfig: OutputConfig): Promise<void> {
@@ -256,14 +262,14 @@ export class InteractiveCLI {
     }
 
     // File output
-    if (outputConfig.format === 'file' || outputConfig.format === 'both') {
-      const timestamp = new Date().toISOString().split('T')[0];
-      const filename = outputConfig.filename || 
-        `complexity_report_${timestamp}.${outputConfig.fileFormat}`;
+    // if (outputConfig.format === 'file' || outputConfig.format === 'both') {
+    //   const timestamp = new Date().toISOString().split('T')[0];
+    //   const filename = outputConfig.filename || 
+    //     `complexity_report_${timestamp}.${outputConfig.fileFormat}`;
       
-      await this.fileOutput.save(results, filename, outputConfig.fileFormat!);
-      console.log(chalk.green(`✅ Report saved to: ${filename}`));
-    }
+    //   await this.fileOutput.save(results, filename, outputConfig.fileFormat!);
+    //   console.log(chalk.green(`✅ Report saved to: ${filename}`));
+    // }
   }
 
   private async askContinue(): Promise<void> {
