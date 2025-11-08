@@ -3,7 +3,7 @@ import * as path from 'path';
 import * as fs from 'fs-extra';
 import { ComplexityAnalyzer } from './analyzer';
 import { ConsoleOutput } from './output/console';
-import { FileOutput } from './output/file';
+// import { FileOutput } from './output/file';
 import { OutputConfig, AnalyzerConfig } from './types';
 
 interface FileInputConfig {
@@ -14,7 +14,7 @@ interface FileInputConfig {
 export class InteractiveCLI {
   private analyzer: ComplexityAnalyzer;
   private consoleOutput: ConsoleOutput;
-  private fileOutput: FileOutput;
+  // private fileOutput: FileOutput;
   private config: AnalyzerConfig;
   private inquirer: any;
 
@@ -34,7 +34,7 @@ export class InteractiveCLI {
 
     this.analyzer = new ComplexityAnalyzer(this.config);
     this.consoleOutput = new ConsoleOutput();
-    this.fileOutput = new FileOutput();
+    // this.fileOutput = new FileOutput();
   }
 
   private async loadInquirer() {

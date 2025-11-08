@@ -43,10 +43,11 @@ export class ComplexityAnalyzer {
     // Perform analysis
     const complexity = await analyzer.analyzeComplexity();
     const functions = await analyzer.extractFunctions();
-    const classes = await analyzer.extractClasses();
+    // const classes = await analyzer.extractClasses();
     
     // Generate summary
-    const summary = this.generateSummary(functions, classes, complexity);
+    // const summary = this.generateSummary(functions, classes, complexity);
+    const summary = this.generateSummary(functions,complexity);
     
     // Get file stats
     const stats = await fs.stat(filePath);
@@ -56,14 +57,14 @@ export class ComplexityAnalyzer {
       language: 'java',
       complexity,
       functions,
-      classes,
+      // classes,
       summary,
       metadata: {
         originalPath: filePath,
-        analyzedAt: new Date().toISOString(),
-        analyzerVersion: '1.0.0',
+        // analyzedAt: new Date().toISOString(),
+        // analyzerVersion: '1.0.0',
         language: 'java',
-        fileSize: stats.size
+        // fileSize: stats.size
       }
     };
   }
@@ -72,9 +73,9 @@ export class ComplexityAnalyzer {
     return path.extname(filePath).toLowerCase() === '.java';
   }
 
-  private generateSummary(functions: any[], classes: any[], complexity: any) {
+  private generateSummary(functions: any[], complexity: any) {
     const totalFunctions = functions.length;
-    const totalClasses = classes.length;
+    // const totalClasses = classes.length;
     const averageComplexity = functions.length > 0 
       ? functions.reduce((sum, fn) => sum + fn.complexity.cyclomatic, 0) / functions.length 
       : complexity.cyclomatic;
@@ -99,7 +100,7 @@ export class ComplexityAnalyzer {
 
     return {
       totalFunctions,
-      totalClasses,
+      // totalClasses,
       averageComplexity: Math.round(averageComplexity * 100) / 100,
       highComplexityFunctions,
       recommendations

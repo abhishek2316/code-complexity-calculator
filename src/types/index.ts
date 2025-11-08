@@ -3,18 +3,18 @@ export interface AnalysisResult {
   language: string;
   complexity: ComplexityMetrics;
   functions: FunctionAnalysis[];
-  classes: ClassAnalysis[];
+  // classes: ClassAnalysis[];
   summary: AnalysisSummary;
   metadata: AnalysisMetadata;
 }
 
 export interface ComplexityMetrics {
   cyclomatic: number;
-  cognitive: number;
-  timeComplexity: string;
-  spaceComplexity: string;
-  linesOfCode: number;
-  maintainabilityIndex: number;
+  // cognitive: number;
+  // timeComplexity: string;
+  // spaceComplexity: string;
+  // // linesOfCode: number;
+  // maintainabilityIndex: number;
 }
 
 export interface FunctionAnalysis {
@@ -26,18 +26,18 @@ export interface FunctionAnalysis {
   returnType: string;
 }
 
-export interface ClassAnalysis {
-  name: string;
-  startLine: number;
-  endLine: number;
-  methods: FunctionAnalysis[];
-  fields: number;
-  complexity: ComplexityMetrics;
-}
+// export interface ClassAnalysis {
+//   name: string;
+//   startLine: number;
+//   endLine: number;
+//   methods: FunctionAnalysis[];
+//   fields: number;
+//   complexity: ComplexityMetrics;
+// }
 
 export interface AnalysisSummary {
   totalFunctions: number;
-  totalClasses: number;
+  // totalClasses: number;
   averageComplexity: number;
   highComplexityFunctions: string[];
   recommendations: string[];
@@ -45,10 +45,10 @@ export interface AnalysisSummary {
 
 export interface AnalysisMetadata {
   originalPath: string;
-  analyzedAt: string;
-  analyzerVersion: string;
+  // analyzedAt: string;
+  // analyzerVersion: string;
   language: string;
-  fileSize: number;
+  // fileSize: number;
 }
 
 export interface OutputConfig {
@@ -68,4 +68,10 @@ export interface AnalyzerConfig {
     medium: number;
     high: number;
   };
+}
+
+export interface CyclomaticConfig {
+    countCaseStatements?: boolean;  // Whether to count each case as a decision point
+    countLogicalOperators?: boolean; // Whether to count && and || as decision points
+    countTernary?: boolean;          // Whether to count ternary operators
 }

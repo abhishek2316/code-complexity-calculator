@@ -1,4 +1,4 @@
-import { ComplexityMetrics, FunctionAnalysis, ClassAnalysis } from '../../types';
+import { ComplexityMetrics, FunctionAnalysis } from '../../types';
 
 export abstract class BaseAnalyzer {
     protected content: string;
@@ -11,9 +11,9 @@ export abstract class BaseAnalyzer {
 
     abstract analyzeComplexity(): Promise<ComplexityMetrics>;
     abstract extractFunctions(): Promise<FunctionAnalysis[]>;
-    abstract extractClasses(): Promise<ClassAnalysis[]>;
-    abstract calculateTimeComplexity(): string;
-    abstract calculateSpaceComplexity(): string;
+    // abstract extractClasses(): Promise<ClassAnalysis[]>;
+    // abstract calculateTimeComplexity(): string;
+    // abstract calculateSpaceComplexity(): string;
 
     protected countLines(): number {
         return this.content.split('\n').length;
@@ -52,40 +52,42 @@ export abstract class BaseAnalyzer {
     //     return complexity;
     // }
 
-    protected calculateCyclomaticComplexity(): number {
-        if (!this.content) return 1;
+    //  Working version of cyclomatic complexity calculation
 
-        // Decision points that increase complexity
-        const decisionPatterns = [
-            /\bif\b/g,           // if statements
-            /\belse\s+if\b/g,    // else if statements  
-            /\bwhile\b/g,        // while loops
-            /\bfor\b/g,          // for loops
-            /\bdo\b/g,           // do-while loops
-            /\bswitch\b/g,       // switch statements
-            /\bcase\b/g,         // case labels
-            /\bcatch\b/g,        // catch blocks
-            /\&\&/g,             // logical AND
-            /\|\|/g,             // logical OR
-            /\?/g,               // ternary operator
-        ];
+    // protected calculateCyclomaticComplexity(): number {
+    //     if (!this.content) return 1;
 
-        let complexity = 1; // Base complexity
+    //     // Decision points that increase complexity
+    //     const decisionPatterns = [
+    //         /\bif\b/g,           // if statements
+    //         /\belse\s+if\b/g,    // else if statements  
+    //         /\bwhile\b/g,        // while loops
+    //         /\bfor\b/g,          // for loops
+    //         /\bdo\b/g,           // do-while loops
+    //         /\bswitch\b/g,       // switch statements
+    //         /\bcase\b/g,         // case labels
+    //         /\bcatch\b/g,        // catch blocks
+    //         /\&\&/g,             // logical AND
+    //         /\|\|/g,             // logical OR
+    //         /\?/g,               // ternary operator
+    //     ];
 
-        try {
-            for (const pattern of decisionPatterns) {
-                const matches = this.content.match(pattern);
-                if (matches) {
-                    complexity += matches.length;
-                }
-            }
-        } catch (error) {
-            console.error('Error calculating cyclomatic complexity:', error);
-            return 1; // Return base complexity on error
-        }
+    //     let complexity = 1; // Base complexity
 
-        return Math.max(1, complexity);
-    }
+    //     try {
+    //         for (const pattern of decisionPatterns) {
+    //             const matches = this.content.match(pattern);
+    //             if (matches) {
+    //                 complexity += matches.length;
+    //             }
+    //         }
+    //     } catch (error) {
+    //         console.error('Error calculating cyclomatic complexity:', error);
+    //         return 1; // Return base complexity on error
+    //     }
+
+    //     return Math.max(1, complexity);
+    // }
 
     // protected calculateCognitiveComplexity(): number {
     //     // Simplified cognitive complexity calculation
